@@ -10,17 +10,7 @@ export default function Login() {
   const { changeUser, userContext } = useUser() as any;
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
-//   useEffect(() => {
-//     const user: any = JSON.parse(localStorage.getItem("user") as string);
-//     if (user?.loginResult?.isAdmin) {
-//       console.log(user);
-//       navigate("/admin");
-//     } else {
-//       navigate("/");
-//     }
-//   }, []);
-
+  
   const onSubmit = (e: any) => {
     e.preventDefault();
     if (email.trim() && pass.trim()) {

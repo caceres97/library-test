@@ -34,16 +34,16 @@ export default function Homepage() {
 
   useEffect(() => {
     const user: any = JSON.parse(localStorage.getItem("user") as string);
-    if (!user?.loginResult) {
+    if (!user) {
       navigate("/login");
+    } else {
+      axios.get(`${process.env.REACT_APP_BASE_URL}/books`).then((response) => {
+        setBooks(response.data);
+      });
+      //GetUserData
+      setUserId(user.loginResult.id);
+      getAssets();
     }
-
-    axios.get(`${process.env.REACT_APP_BASE_URL}/books`).then((response) => {
-      setBooks(response.data);
-    });
-    //GetUserData
-    setUserId(user.loginResult.id);
-    getAssets();
   }, [isOpen]);
 
   useEffect(() => {
